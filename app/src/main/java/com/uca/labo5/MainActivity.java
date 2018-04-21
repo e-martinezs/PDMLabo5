@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    List<Planet> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,11 +19,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rv;
         PlanetAdapter adapter;
         LinearLayoutManager manager;
-        List<Planet> list = new ArrayList<>();
 
-        list.add(new Planet(1,"Earth", ":v"));
-        list.add(new Planet(2,"Mars", ">:v"));
-        list.add(new Planet(3,"Jupiter", ":'v"));
+        fillList();
         adapter = new PlanetAdapter(this,list);
         manager = new LinearLayoutManager(this);
 
@@ -30,5 +28,17 @@ public class MainActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
+    }
+
+    private void fillList(){
+        list.add(new Planet(1,"Sun", "Sun"));
+        list.add(new Planet(2,"Mercury", "Mercury"));
+        list.add(new Planet(3,"Venus", "Venus"));
+        list.add(new Planet(4,"Mars", "Mars"));
+        list.add(new Planet(5,"Earth", "Earth"));
+        list.add(new Planet(6,"Jupiter", "Jupiter"));
+        list.add(new Planet(7,"Saturn", "Saturn"));
+        list.add(new Planet(8,"Uranus", "Uranus"));
+        list.add(new Planet(9,"Neptune", "Neptune"));
     }
 }
