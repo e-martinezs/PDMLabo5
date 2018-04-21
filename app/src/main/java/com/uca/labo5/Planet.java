@@ -9,6 +9,7 @@ public class Planet {
     private int id;
     private String name;
     private String description;
+    private boolean favorite = false;
 
     public Planet(int id, String name, String description){
         this.id = id;
@@ -38,5 +39,13 @@ public class Planet {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }

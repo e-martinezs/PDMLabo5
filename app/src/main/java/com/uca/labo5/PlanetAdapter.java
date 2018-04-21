@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,13 +29,32 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetView
     public PlanetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.activity_cardview, parent, false);
-        return new PlanetViewHolder(v);
+        final PlanetViewHolder holder = new PlanetViewHolder(v);
+
+        final CheckBox favorite = v.findViewById(R.id.favoriteCheckBox);
+        favorite.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if (favorite.isChecked()) {
+                    list.get(holder.getAdapterPosition()).setFavorite(true);
+                }else{
+                    list.get(holder.getAdapterPosition()).setFavorite(false);
+                }
+            }
+        });
+
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(PlanetViewHolder holder, int position) {
         holder.nameTextView.setText(list.get(position).getName());
         holder.descriptionTextView.setText(list.get(position).getDescription());
+        if (list.get(position).isFavorite()){
+            holder.favoriteCheckBox.setChecked(true);
+        }else{
+            holder.favoriteCheckBox.setChecked(false);
+        }
     }
 
     @Override
@@ -46,12 +66,14 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetView
         TextView nameTextView;
         TextView descriptionTextView;
         ImageView imgImageView;
+        CheckBox favoriteCheckBox;
 
         public PlanetViewHolder(View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             imgImageView = itemView.findViewById(R.id.imgImageView);
+            favoriteCheckBox = itemView.findViewById(R.id.favoriteCheckBox);
         }
     }
 }
