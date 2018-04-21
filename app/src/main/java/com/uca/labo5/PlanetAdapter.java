@@ -27,7 +27,7 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetView
     @Override
     public PlanetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View v = inflater.inflate(R.layout.activity_cardview, null);
+        View v = inflater.inflate(R.layout.activity_cardview, parent, false);
         return new PlanetViewHolder(v);
     }
 
