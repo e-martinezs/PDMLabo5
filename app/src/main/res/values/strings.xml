@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Labo5</string>
+    <string name="app_name">Planets</string>
+    <string name="text_sun">Sun</string>
+    <string name="text_mercury">Mercury</string>
+    <string name="text_venus">Venus</string>
+    <string name="text_mars">Mars</string>
+    <string name="text_earth">Earth</string>
+    <string name="text_jupiter">Jupiter</string>
+    <string name="text_saturn">Saturn</string>
+    <string name="text_uranus">Uranus</string>
+    <string name="text_neptune">Neptune</string>
+    <string name="desc_sun">Sun</string>
+    <string name="desc_mercury">Mercury</string>
+    <string name="desc_venus">Venus</string>
+    <string name="desc_mars">Mars</string>
+    <string name="desc_earth">Earth</string>
+    <string name="desc_jupiter">Jupiter</string>
+    <string name="desc_saturn">Saturn</string>
+    <string name="desc_uranus">Uranus</string>
+    <string name="desc_neptune">Neptune</string>
+    <string name="tab_planets">Planets</string>
+    <string name="tab_favorites">Favorites</string>
 </resources>

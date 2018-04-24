@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter{
     private int COUNT = 2;
-    private String tabTitles[] = new String[]{"Planets", "Favorites"};
+    private List<String> tabTitles = new ArrayList<>();
     private List<Fragment> fragments = new ArrayList<>();
 
     public ViewPagerAdapter(FragmentManager fm) {
@@ -37,10 +37,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public CharSequence getPageTitle(int position){
-        return tabTitles[position];
+        return tabTitles.get(position);
     }
 
-    public void addFragment(Fragment fragment) {
+    public void addFragment(Fragment fragment, String title) {
         fragments.add(fragment);
+        tabTitles.add(title);
     }
 }
