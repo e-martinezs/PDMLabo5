@@ -66,6 +66,7 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetView
         });
         holder.nameTextView.setText(list.get(position).getName());
         holder.descriptionTextView.setText(list.get(position).getDescription());
+        holder.imgImageView.setImageResource(list.get(position).getImageID());
         if (list.get(position).isFavorite()){
             holder.favoriteCheckBox.setChecked(true);
         }else{

@@ -10,11 +10,13 @@ public class Planet {
     private String name;
     private String description;
     private boolean favorite = false;
+    private int imageID;
 
-    public Planet(int id, String name, String description){
+    public Planet(int id, String name, String description, int imageID){
         this.id = id;
         this.name = name;
         this.description = description;
+        this.imageID = imageID;
     }
 
     public int getId() {
@@ -47,5 +49,13 @@ public class Planet {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public int getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(int imageID) {
+        this.imageID = imageID;
     }
 }

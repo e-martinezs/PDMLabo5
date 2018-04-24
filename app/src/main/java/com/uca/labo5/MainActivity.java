@@ -31,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fillList(){
-        list.add(new Planet(1,"Sun", "Sun"));
-        list.add(new Planet(2,"Mercury", "Mercury"));
-        list.add(new Planet(3,"Venus", "Venus"));
-        list.add(new Planet(4,"Mars", "Mars"));
-        list.add(new Planet(5,"Earth", "Earth"));
-        list.add(new Planet(6,"Jupiter", "Jupiter"));
-        list.add(new Planet(7,"Saturn", "Saturn"));
-        list.add(new Planet(8,"Uranus", "Uranus"));
-        list.add(new Planet(9,"Neptune", "Neptune"));
+        list.add(new Planet(1,"Sun", "Sun", R.drawable.sun));
+        list.add(new Planet(2,"Mercury", "Mercury", R.drawable.mercury));
+        list.add(new Planet(3,"Venus", "Venus", R.drawable.venus));
+        list.add(new Planet(4,"Mars", "Mars", R.drawable.mars));
+        list.add(new Planet(5,"Earth", "Earth", R.drawable.earth));
+        list.add(new Planet(6,"Jupiter", "Jupiter", R.drawable.jupiter));
+        list.add(new Planet(7,"Saturn", "Saturn", R.drawable.saturn));
+        list.add(new Planet(8,"Uranus", "Uranus", R.drawable.uranus));
+        list.add(new Planet(9,"Neptune", "Neptune", R.drawable.neptune));
     }
 }
