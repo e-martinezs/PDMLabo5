@@ -1,33 +1,33 @@
 package com.uca.labo5;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Planet> list = new ArrayList<>();
+    public static List<Planet> list = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView rv;
-        PlanetAdapter adapter;
-        LinearLayoutManager manager;
-
         fillList();
-        adapter = new PlanetAdapter(this,list);
-        manager = new LinearLayoutManager(this);
 
-        rv = findViewById(R.id.recyclerView);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(manager);
-        rv.setAdapter(adapter);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        viewPager.setAdapter(viewPagerAdapter);
+
+        viewPagerAdapter.addFragment(PlanetsFragment.newInstance(viewPagerAdapter, false));
+        viewPagerAdapter.addFragment(PlanetsFragment.newInstance(viewPagerAdapter, true));
+
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void fillList(){

@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,37 +18,52 @@ import java.util.List;
 
 public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetViewHolder>{
 
-    Context mContext;
-    List<Planet> list;
+    private Context mContext;
+    private List<Planet> list = new ArrayList<>();
+    private boolean favorite;
+    private ViewPagerAdapter vpa;
 
-    public PlanetAdapter(Context mContext, List<Planet> list){
+    public PlanetAdapter(Context mContext, ViewPagerAdapter vpa, boolean favorite){
         this.mContext = mContext;
-        this.list = list;
+        this.favorite = favorite;
+        this.vpa = vpa;
+
+        if (favorite){
+            for (Planet p:MainActivity.list){
+                if (p.isFavorite()) {
+                    list.add(p);
+                }
+            }
+        }
+        else{
+            for (Planet p:MainActivity.list){
+                list.add(p);
+            }
+        }
     }
 
     @Override
     public PlanetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.activity_cardview, parent, false);
-        final PlanetViewHolder holder = new PlanetViewHolder(v);
-
-        final CheckBox favorite = v.findViewById(R.id.favoriteCheckBox);
-        favorite.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if (favorite.isChecked()) {
-                    list.get(holder.getAdapterPosition()).setFavorite(true);
-                }else{
-                    list.get(holder.getAdapterPosition()).setFavorite(false);
-                }
-            }
-        });
-
-        return holder;
+        return new PlanetViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(PlanetViewHolder holder, int position) {
+    public void onBindViewHolder(final PlanetViewHolder holder, int position) {
+        holder.favoriteCheckBox.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Planet p = list.get(holder.getAdapterPosition());
+                if (holder.favoriteCheckBox.isChecked()) {
+                    p.setFavorite(true);
+                    vpa.notifyDataSetChanged();
+                }else{
+                    p.setFavorite(false);
+                    vpa.notifyDataSetChanged();
+                }
+            }
+        });
         holder.nameTextView.setText(list.get(position).getName());
         holder.descriptionTextView.setText(list.get(position).getDescription());
         if (list.get(position).isFavorite()){
